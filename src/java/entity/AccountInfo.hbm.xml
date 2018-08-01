@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 1:14:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.AccountInfo" table="account_info" catalog="online_bank" optimistic-lock="version">
+        <id name="accountNumber" type="java.lang.Integer">
+            <column name="account_number" />
+            <generator class="identity" />
+        </id>
+        <property name="accountName" type="string">
+            <column name="account_name" length="45" not-null="true" />
+        </property>
+        <property name="fatherName" type="string">
+            <column name="father_name" length="45" not-null="true" />
+        </property>
+        <property name="motherName" type="string">
+            <column name="mother_name" length="45" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="100" not-null="true" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="11" not-null="true" />
+        </property>
+        <property name="nid" type="int">
+            <column name="nid" not-null="true" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="10" not-null="true" />
+        </property>
+        <property name="balance" type="double">
+            <column name="balance" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="adate" type="date">
+            <column name="adate" length="10" not-null="true" />
+        </property>
+        <set name="transfers" table="transfer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.Transfer" />
+        </set>
+        <set name="loanPayments" table="loan_payment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.LoanPayment" />
+        </set>
+        <set name="loans" table="loan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.Loan" />
+        </set>
+        <set name="withdrawals" table="withdrawal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.Withdrawal" />
+        </set>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.User" />
+        </set>
+        <set name="transactionAccounts" table="transaction_account" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.TransactionAccount" />
+        </set>
+        <set name="deposits" table="deposit" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_number" not-null="true" />
+            </key>
+            <one-to-many class="entity.Deposit" />
+        </set>
+    </class>
+</hibernate-mapping>

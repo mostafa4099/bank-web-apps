@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 1:14:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.TransactionAccount" table="transaction_account" catalog="online_bank" optimistic-lock="version">
+        <id name="transactionId" type="java.lang.Integer">
+            <column name="transaction_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="accountInfo" class="entity.AccountInfo" fetch="select">
+            <column name="account_number" not-null="true" />
+        </many-to-one>
+        <many-to-one name="deposit" class="entity.Deposit" fetch="select">
+            <column name="dep_id" />
+        </many-to-one>
+        <many-to-one name="transfer" class="entity.Transfer" fetch="select">
+            <column name="transfer_id" />
+        </many-to-one>
+        <many-to-one name="withdrawal" class="entity.Withdrawal" fetch="select">
+            <column name="withdraw_id" />
+        </many-to-one>
+        <property name="deposit_1" type="java.lang.Double">
+            <column name="deposit" precision="22" scale="0" />
+        </property>
+        <property name="ddate" type="date">
+            <column name="ddate" length="10" />
+        </property>
+        <property name="withdraw" type="java.lang.Double">
+            <column name="withdraw" precision="22" scale="0" />
+        </property>
+        <property name="wdate" type="date">
+            <column name="wdate" length="10" />
+        </property>
+        <property name="transferAmount" type="java.lang.Double">
+            <column name="transfer_amount" precision="22" scale="0" />
+        </property>
+        <property name="transferAccount" type="java.lang.Integer">
+            <column name="transfer_account" />
+        </property>
+        <property name="tdate" type="date">
+            <column name="tdate" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

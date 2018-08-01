@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/officeTemplate.xhtml">
+
+            <ui:define name="menu">
+                <h:form>
+                    <p:menubar>
+                        <p:menuitem value="Mostafa Bank" url="../template/officeTemplate.xhtml" style="font-weight: bolder"></p:menuitem>
+                        <p:menuitem value="Home" url="../template/officeTemplate.xhtml"></p:menuitem>
+                        <p:submenu label="Account">
+                            <p:menuitem value="Create Account" url="../office/create_account.xhtml"></p:menuitem>
+                            <p:menuitem value="Update Account" url="../office/update_account.xhtml"></p:menuitem>
+                            <p:menuitem value="Close Account" url="../office/close_account.xhtml"></p:menuitem>
+                        </p:submenu>
+                        <p:submenu label="Balance">
+                            <p:menuitem value="Balance Check" url="../office/balance_check.xhtml"></p:menuitem>
+                            <p:menuitem value="Deposit" url="../office/deposit.xhtml"></p:menuitem>
+                            <p:menuitem value="Withdraw" url="../office/withdrawal.xhtml"></p:menuitem>
+                            <p:menuitem value="Balance Transfer" url="../office/balance_transfer.xhtml"></p:menuitem>
+                        </p:submenu>
+                        <p:submenu label="Loan">
+                            <p:menuitem value="Loan" url="../office/loan.xhtml"></p:menuitem>
+                            <p:menuitem value="Pay Loan" url="../office/loan_payment.xhtml"></p:menuitem>
+                            <p:menuitem value="Loan Check" url="#"></p:menuitem>
+                        </p:submenu>
+                        <p:submenu label="Report">
+                            <p:menuitem value="Deposit History" url="#"></p:menuitem>
+                            <p:menuitem value="Withdraw Histrory" url="#"></p:menuitem>
+                            <p:menuitem value="Balance Transfer History" url="#"></p:menuitem>
+                            <p:menuitem value="Loan Payment History" url="#"></p:menuitem>
+                            <p:menuitem value="Transaction History" url="#"></p:menuitem>
+                        </p:submenu>
+                        <f:facet name="options">
+                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:outputStylesheet name="./css/define.css"/>
+                <h:form>
+                    <p:panel header="Create Account">
+                        <p:messages id="msg" closable="true" showDetail="true"></p:messages>
+                        <p:panelGrid columns="2" styleClass="panelg">
+                            <p:outputLabel value="Name:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.accountName}"></p:inputText>
+                            <p:outputLabel value="Father Name:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.fatherName}"></p:inputText>
+                            <p:outputLabel value="Mother Name:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.motherName}"></p:inputText>
+                            <p:outputLabel value="Address:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.address}"></p:inputText>
+                            <p:outputLabel value="Mobile:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.mobile}"></p:inputText>
+                            <p:outputLabel value="NID:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.nid}"></p:inputText>
+                            <p:outputLabel value="Date Of Birth:"></p:outputLabel>
+                            <p:calendar value="#{accountMB.account.dob}" pattern="dd-MM-yyyy" id="button" showOn="button"></p:calendar>
+                            <p:outputLabel value="Deposit:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.balance}"></p:inputText>
+                        </p:panelGrid><br></br>
+                    </p:panel>
+                    <p:commandButton value="Create Account" action="#{accountMB.createAccount()}" update="msg" ajax="false"></p:commandButton>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

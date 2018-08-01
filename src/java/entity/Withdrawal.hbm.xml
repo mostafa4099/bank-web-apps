@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 1:14:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Withdrawal" table="withdrawal" catalog="online_bank" optimistic-lock="version">
+        <id name="withdrawId" type="java.lang.Integer">
+            <column name="withdraw_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="accountInfo" class="entity.AccountInfo" fetch="select">
+            <column name="account_number" not-null="true" />
+        </many-to-one>
+        <property name="withdraw" type="double">
+            <column name="withdraw" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="wdate" type="date">
+            <column name="wdate" length="10" not-null="true" />
+        </property>
+        <set name="transactionAccounts" table="transaction_account" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="withdraw_id" />
+            </key>
+            <one-to-many class="entity.TransactionAccount" />
+        </set>
+    </class>
+</hibernate-mapping>

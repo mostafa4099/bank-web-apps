@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 1:14:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Loan" table="loan" catalog="online_bank" optimistic-lock="version">
+        <id name="loanId" type="java.lang.Integer">
+            <column name="loan_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="accountInfo" class="entity.AccountInfo" fetch="select">
+            <column name="account_number" not-null="true" />
+        </many-to-one>
+        <property name="loanAmount" type="double">
+            <column name="loan_amount" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="interestRate" type="int">
+            <column name="interest_rate" not-null="true" />
+        </property>
+        <property name="totalMonth" type="int">
+            <column name="total_month" not-null="true" />
+        </property>
+        <property name="totalPayable" type="double">
+            <column name="total_payable" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="monthlyPayment" type="double">
+            <column name="monthly_payment" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ldate" type="date">
+            <column name="ldate" length="10" not-null="true" />
+        </property>
+        <set name="loanPayments" table="loan_payment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="loan_id" not-null="true" />
+            </key>
+            <one-to-many class="entity.LoanPayment" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./index.xhtml">
+
+            <ui:define name="menu">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#{request.getContextPath()}/index.xhtml">Mostafa Bank</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li><a href="#{request.getContextPath()}/index.xhtml">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#{request.getContextPath()}/signup.xhtml"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li class="active"><a href="#{request.getContextPath()}/login.xhtml"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:outputStylesheet name="./css/define.css"/>
+                <h:form>
+                    <p:panel header="Login">
+                        <p:messages id="msg" closable="true" showDetail="true"></p:messages>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="User Name:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.accountName}"></p:inputText>
+                            <p:outputLabel value="Password:"></p:outputLabel>
+                            <p:inputText value="#{accountMB.account.fatherName}"></p:inputText>
+                        </p:panelGrid>
+                        <p:commandButton value="Login" action="#{accountMB.createAccount()}" update="msg"></p:commandButton>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

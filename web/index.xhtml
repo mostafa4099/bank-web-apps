@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <h:outputStylesheet name="./css/template.css"/>
+        <title>Mostafa Bank</title>
+    </h:head>
+
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="header">
+                    <ui:insert name="header">
+                        <img class="img-responsive" src="#{request.getContextPath()}/resources/image/ten-reasons-internet-banking_opt.jpg" alt="Chania" id="header"/> 
+                    </ui:insert>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="menu">
+                    <ui:insert name="menu">
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#{request.getContextPath()}/index.xhtml">Mostafa Bank</a>
+                                </div>
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="#{request.getContextPath()}/index.xhtml">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#{request.getContextPath()}/signup.xhtml"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                                    <li><a href="#{request.getContextPath()}/login.xhtml"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </ui:insert>
+                </div>
+            </div>
+            <div class="row">
+                <div class="content_area">
+                    <div class="left">
+                        <ui:insert name="left">
+                            <p>Quick Link</p>
+                            <a href="#">Forms and Downloads</a><br/>
+                            <a href="#">Schedule of Charges</a><br/>
+                            <a href="#">Interest Rates</a><br/>
+                            <a href="#">Internet Banking</a><br/>
+                            <a href="#">Mobile Banking</a><br/>
+                            <a href="#">Foreign Exchange Rates</a>
+                        </ui:insert>
+                    </div>
+                    <div class="content">
+                        <ui:insert name="content">
+                            <h1>Lorem Ipsum</h1>
+                            <h3>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, velit..."</h3>
+                            <h6>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h6>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium nisl vel venenatis. Etiam eget rutrum justo. Aliquam laoreet lacinia ex id viverra. Praesent erat felis, aliquet quis molestie non, fermentum quis ante. Mauris mollis nisl risus, vitae fringilla lacus fermentum a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum scelerisque diam hendrerit tellus tempus viverra.</p>
+
+                            <p>Suspendisse efficitur leo ipsum, quis luctus lorem tincidunt quis. Donec finibus risus vitae laoreet placerat. In venenatis urna elit, vel mattis nulla lobortis vitae. Donec eget erat nec arcu euismod venenatis sit amet vel mi. Nulla ante quam, facilisis ut scelerisque a, sagittis sed augue. Aliquam lobortis magna leo, vitae ornare tellus auctor sed. Integer dignissim sem non porta dictum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Suspendisse non purus sit amet ex tristique tempus. Nullam finibus lacus vel ipsum tincidunt, quis venenatis risus scelerisque. Vivamus vitae hendrerit nulla.</p>
+
+                            <p>Aenean et convallis nulla. Curabitur eleifend a mauris quis tempus. Morbi a dolor rhoncus est efficitur ornare in vel augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Maecenas nec lacinia odio. Vestibulum arcu erat, feugiat quis condimentum vitae, pulvinar id diam.</p>
+                        </ui:insert>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="footer">
+                    <ui:insert name="footer">
+                        &copy;SNA Management System.
+                    </ui:insert>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>
